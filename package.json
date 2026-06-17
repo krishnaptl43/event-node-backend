@@ -1,0 +1,21 @@
+{
+  "name": "event-managment",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "SET DEBUG=event-managment:* & nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "debug": "^4.4.3",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "http-errors": "^2.0.1",
+    "mongoose": "^9.7.0",
+    "morgan": "^1.11.0",
+    "nodemon": "^3.1.14"
+  }
+}
