@@ -1,9 +1,13 @@
 import { Router } from 'express';
 const router = Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// get all users
+router.get("/", getAllUsers);
+
+router.post("/", registerUser);
+
+router.patch("/:userId", updateUser);
+
+router.delete("/:userId", deleteUser);
 
 export default router;
