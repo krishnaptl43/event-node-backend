@@ -28,9 +28,7 @@ const userSchema = new Schema({
                 return /^(?:\+91|91)?[6-9]\d{9}$/.test(v)
             },
             message: (props) => `${props.value} is Not a valid phone`
-        },
-        required: [true, "phone is required"],
-        unique: true
+        }
     },
     password: {
         type: String,
@@ -53,9 +51,14 @@ const userSchema = new Schema({
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    role : {
+        type : String,
+        enum : ["user","admin"],
+        default : "user"
     }
-},{timestamps : true});
+}, { timestamps: true });
 
-const userModel = model("user",userSchema);
+const userModel = model("user", userSchema);
 
 export default userModel;
