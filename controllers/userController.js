@@ -1,5 +1,6 @@
 import { ApiResponse } from "../utils/resPattern.js";
 import userModel from "../models/user.js"
+import { generatHash } from "../config/bcrypt.js";
 
 export async function getAllUsers(req, res, next) {
     try {
@@ -22,7 +23,9 @@ export async function registerUser(req, res, next) {
     try {
         const { email, name, password } = req.body;
 
-        let user = await userModel.create({ email, name, password });
+        let hash = await generatHash(password);
+
+        let user = await userModel.create({ email, name, password: hash });
 
         res.status(201).json(new ApiResponse(true, user, "success"));
 
