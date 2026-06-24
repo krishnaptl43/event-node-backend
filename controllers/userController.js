@@ -8,7 +8,7 @@ export async function getAllUsers(req, res, next) {
         let limit = req.query.limit <= 100 ? req.query.limit : 25
         let skip = page === 1 ? 0 : (page - 1) * limit
 
-        let users = await userModel.find()
+        let users = await userModel.find({role : "user"})
             .skip(skip)
             .limit(limit);
 

@@ -12,7 +12,7 @@ export function generateToken(data) {
 }
 
 
-export async function verifyToken(token) {
+export function verifyToken(token) {
     try {
         let tokenData = jwt.verify(token, process.env.TOKEN_SECRET);
         return tokenData;
