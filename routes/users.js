@@ -1,17 +1,22 @@
 import { Router } from 'express';
-import { deleteUser, getAllUsers, registerUser, updateUser } from '../controllers/userController.js';
+import { deleteUser, getAllUsers, registerUser, updateUser,changePassword,uploadImage } from '../controllers/userController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 import allowRoles from '../middlewares/allowRoles.js';
+import {userUpload} from '../config/multer.js';
+
 const router = Router();
 
 // get all users
 router.post("/", registerUser);
 
-router.get("/", authMiddleware,allowRoles("admin"), getAllUsers);
+router.get("/", authMiddleware, allowRoles("admin"), getAllUsers);
 
-router.patch("/:userId", authMiddleware, updateUser);
+router.patch("/", authMiddleware,allowRoles("admin","user"), updateUser);
 
-router.delete("/:userId", authMiddleware, deleteUser);
+router.delete("/", authMiddleware,allowRoles("user"), deleteUser);
 
+router.patch("/change-password", authMiddleware,allowRoles("user","admin"), changePassword);
+
+router.patch("/upload-image", authMiddleware,allowRoles("user","admin"),userUpload.single("image"), uploadImage);
 
 export default router;
