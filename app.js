@@ -3,6 +3,7 @@ import express from 'express';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import cors from "cors";
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
@@ -13,6 +14,10 @@ const app = express();
 // view engine setup;
 app.set('view engine', 'ejs');
 
+
+app.use(cors({
+  origin: "*"
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,7 +27,7 @@ app.use(express.static('public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-app.use("/uploads",express.static('uploads'));
+app.use("/uploads", express.static('uploads'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
