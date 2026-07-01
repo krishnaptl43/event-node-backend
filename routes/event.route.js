@@ -14,10 +14,10 @@ router.use("/admin", authMiddleware, allowRoles("admin"));
 // add event by admin
 router.post("/admin", registerEvent);
 
-router.patch("/admin/:EventId", authMiddleware, allowRoles("admin", "user"), updateEvent);
+router.patch("/admin/:EventId", updateEvent);
 
-router.delete("/admin/:EventId", authMiddleware, allowRoles("user"), deleteEvent);
+router.delete("/admin/:EventId", deleteEvent);
 
-router.patch("/admin/cancel/:EventId", authMiddleware, allowRoles("user"), cancelEvent);
+router.patch("/admin/cancel/:EventId", cancelEvent);
 
 export default router;

@@ -3,7 +3,8 @@ import { Schema, model } from 'mongoose';
 const eventSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
@@ -43,19 +44,19 @@ const eventSchema = new Schema({
     },
     vip_ticket_price: {
         type: Number,
-        default: 0
+        required: true
     },
     general_ticket_price: {
         type: Number,
-        default: 0
+        required: true
     },
     total_vip_tickets: {
         type: Number,
-        default: 0
+        required: true
     },
     total_general_tickets: {
         type: Number,
-        default: 0
+        required: true
     },
     vip_tickets_sold: {
         type: Number,
@@ -64,6 +65,14 @@ const eventSchema = new Schema({
     general_tickets_sold: {
         type: Number,
         default: 0
+    },
+    highlights: [{
+        type: String,
+        default: null
+    }],
+    category: {
+        type: String,
+        default: null
     },
     isUpcoming: {
         type: Boolean,
