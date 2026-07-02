@@ -87,7 +87,7 @@ const eventSchema = new Schema({
         default: false
     }
 
-});
+},{timestamps: true});
 
 const eventModel = model('event', eventSchema);
 

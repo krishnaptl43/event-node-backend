@@ -4,7 +4,7 @@ import fs from "fs";
 
 const userStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = path.join(__dirname, "uploads", "user-images");
+        const uploadPath = "uploads/user-images";
 
         // Create directory if it doesn't exist
         if (!fs.existsSync(uploadPath)) {
@@ -31,7 +31,7 @@ const fileFilter = (req, file, cb) => {
 
 const eventStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = path.join(__dirname, "uploads", "event-images");
+        const uploadPath = "uploads/event-images";
 
         // Create directory if it doesn't exist
         if (!fs.existsSync(uploadPath)) {
